@@ -1,0 +1,167 @@
+{
+    "dataRoles": [
+    {
+        "displayName": "COSO Pillar",
+        "name": "coso_pillar",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "Risk Title",
+        "name": "risk_title",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "Risk Category",
+        "name": "risk_category",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "SLT Owners",
+        "name": "slt_owners",
+        "kind": "Grouping"
+    },    
+    {
+        "displayName": "Risk Owners",
+        "name": "risk_owners",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "Risk Domain",
+        "name": "risk_domain",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "FY",
+        "name": "fy",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "Reporting Cycle",
+        "name": "reporting_cycle",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "Risk Score",
+        "name": "risk_score",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "Risk Trend",
+        "name": "risk_trend",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "Trend Drivers and Update",
+        "name": "trend_drivers_update",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "Risk Title Order",
+        "name": "risk_title_order",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "Hier Level",
+        "name": "hier_level",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "Risk Code",
+        "name": "risk_code",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "Management Actions",
+        "name": "management_actions",
+        "kind": "Grouping"
+    },
+    {
+        "displayName": "Risk Trend Label",
+        "name": "risk_trend_label",
+        "kind": "Grouping"
+    }
+   
+],
+
+    "dataViewMappings": [{
+        "conditions": [{
+            "coso_pillar": {"min ": 0, "max": 1},
+            "risk_title": {"min ": 0, "max": 1},
+            "risk_category": {"min ": 0, "max": 1},
+            "slt_owners": {"min ": 0, "max": 1},
+            "risk_owners": {"min" : 0, "max": 1},
+            "risk_domain": {"min ": 0, "max": 1},
+            "fy": {"min ": 0, "max": 1},
+            "reporting_cycle": {"min ": 0, "max": 1},
+            "risk_score": {"min": 0, "max":1},
+            "risk_trend": {"min": 0, "max":1},
+            "trend_drivers_update": {"min": 0, "max":1},
+            "risk_title_order": {"min": 0, "max":1},
+            "hier_level": {"min": 0, "max":1},
+            "risk_code": {"min": 0, "max":1},
+            "management_actions": {"min": 0, "max":1},
+            "risk_trend_label": {"min": 0, "max":1}
+
+            
+        }],
+            "categorical": {
+                "categories": {
+                    "select": [
+                        {"for": {"in": "coso_pillar"}}, 
+                        {"for": {"in": "risk_title"}}, 
+                        {"for": {"in": "risk_category"}},
+                        {"for": {"in": "slt_owners"}},
+                        {"for": {"in": "risk_owners"}},
+                        {"for": {"in": "risk_domain"}},
+                        {"for": {"in": "fy"}},
+                        {"for": {"in": "reporting_cycle"}},
+                        {"for": {"in": "risk_score"}},
+                        {"for": {"in": "risk_trend"}},
+                        {"for": {"in": "trend_drivers_update"}},
+                        {"for": {"in": "risk_title_order"}},
+                        {"for": {"in": "hier_level"}},
+                        {"for": {"in": "risk_code"}},
+                        {"for": {"in": "management_actions"}},
+                        {"for": {"in": "risk_trend_label"}}
+                    ]
+                }   
+            }
+    }],
+    "objects": {
+        "enableAxis": {
+            "displayName": "Enable Axis",
+            "properties": {
+                "show": {
+                    "displayName": "Enable Axis",
+                    "type": { "bool": true }
+                }
+            }
+        },
+        "colorSelector": {
+            "displayName": "Data Colors",
+            "properties": {
+                "fill": {
+                    "displayName": "Color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "generalView": {
+            "displayName": "General View",
+            "properties": {
+                "opacity": {
+                    "displayName": "Bars Opacity",
+                    "type": {
+                        "integer": true
+                    }
+                }
+            }
+        }
+    }
+}

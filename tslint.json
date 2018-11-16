@@ -1,0 +1,44 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "class-name": true,
+    "object-literal-key-quotes": [true, "as-needed"],
+    "object-literal-shorthand": true,
+    "object-literal-sort-keys": true,
+    "no-var-keyword": true,
+    "no-duplicate-variable": true,
+    "max-line-length": true,
+    "max-file-line-count": true,
+    "no-var-requires": true,
+    "no-internal-module": false,
+    "no-namespace": false,
+    "member-access": false,
+    "no-debugger": true,
+    "prefer-const": true,
+    "jsdoc-format": true,
+    "ordered-imports": true,
+    "semicolon": [true, "always"],
+    "no-console": [true, "log", "error"],
+    "max-classes-per-file": [true, 1],
+    "trailing-comma": false,
+    "no-unused-variable": true,
+    "interface-name": false,
+    "whitespace": [true, "check-decl", "check-type", "check-branch", "check-operator", "check-separator", "check-typecast"],
+    "one-line": [
+      "check-whitespace",
+      "check-open-brace"
+    ],
+    "quotemark": [
+      "single",
+      "avoid-escape"
+    ],
+    "whitespace": [
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-seperator",
+      "check-type"
+    ]
+  }
+}

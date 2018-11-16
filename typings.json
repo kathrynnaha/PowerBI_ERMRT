@@ -1,0 +1,9 @@
+{
+  "globalDependencies": {
+    "d3": "github:DefinitelyTyped/DefinitelyTyped/d3/d3.d.ts#6e2f2280ef16ef277049d0ce8583af167d586c59",
+    "lodash": "registry:dt/lodash#4.14.0+20161110215204"
+  },
+  "dependencies": {
+    "lodash": "registry:npm/lodash#4.0.0+20161015015725"
+  }
+}

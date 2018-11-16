@@ -1,0 +1,13 @@
+{
+  "name": "visual",
+  "dependencies": {
+    "@types/lodash": "^4.14.116",
+    "d3": "^3.5.5",
+    "lodash": "^3.10.1",
+    "tslint": "^4.3.1",
+    "typescript": "^2.1.4"
+  },
+  "scripts": {
+    "lint": "tslint \"src/**/*.ts\""
+  }
+}

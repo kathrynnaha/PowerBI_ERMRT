@@ -1,0 +1,117 @@
+.popup {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    width: 500px;        
+    margin:10px;
+    height: auto;
+    }
+    .popup div {
+        height: auto;
+    }
+   
+    .popup h3,
+    .popup h2 {
+        border-bottom: none;
+    }
+
+    .popup .header,
+    .popup .footer,
+    .popup .label{
+        font-size:12px;
+        font-weight:500;
+        line-height:16px;
+    }
+    .popup h2.header{
+        position: relative;
+        padding:10px 17px;
+        margin: 0;
+        border-radius: 8px 8px 0 0;
+        background:#000000;
+        color:#ffffff;  
+    }
+    .popup h2.header.show-pointer::before{
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    bottom: 100%;
+    left: 8%;
+    margin-left: -10px;
+    border-color: rgba(0, 0, 0, 0);
+    border: solid transparent;
+    border-bottom-color: #000000;
+    border-width: 10px;
+    pointer-events: none;
+}
+
+    .popup .inner-content.show-pointer::after{
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute; 
+    top: 100%;
+    left: 8%;
+    margin-left: -10px;
+    border-color: rgba(0, 0, 0, 0);
+    border: solid transparent;
+    border-top-color: #000000;
+    border-width: 10px;
+    pointer-events: none;
+}
+    .popup .owner .label{
+        min-width:100px;
+        display: inline-block;
+        padding:0px 10px;
+        font-size:12px;
+        margin: 0;
+        color:#4a4a4a;
+        font-weight:bold;
+    }
+    .popup .owner .detail{
+        padding:0px 20px;
+        font-size:12px;
+        font-weight: bold;
+    }
+
+    .popup .owner .risk-detail{
+        padding:0px 15px;
+        font-size:12px;
+        font-weight: bold;
+    }
+
+    .popup .owner .risk-title-detail{
+        padding:0px 41px; 
+        font-size:12px;
+        font-weight: bold;
+    }
+
+    .inner-content{
+        border:1px solid #000000;
+        padding: 5px;
+    }
+    .popup h3.header{
+        padding:0 9px;
+        margin-top:2px;
+        font-family: 'Roboto', sans-serif;
+        color:#4a4a4a;
+        background: transparent !important;
+        font-weight: bold;
+    }
+    .popup ul{
+        margin-top: -8px;
+    }
+    .popup li{
+        font-size:12px;
+        /*line-height:30px;*/
+        color:#4a4a4a;
+        list-style-type: none !important;
+    }
+    .popup li2{
+        font-size:12px;
+        margin-left: 50px;
+      
+        color:#4a4a4a;
+        list-style-type: disc !important;
+    }

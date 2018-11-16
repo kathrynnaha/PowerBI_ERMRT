@@ -1,0 +1,282 @@
+/*
+ *  Power BI Visual CLI
+ *
+ *  Copyright (c) Microsoft Corporation
+ *  All rights reserved.
+ *  MIT License
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the ""Software""), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in
+ *  all copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ *  THE SOFTWARE.
+ */
+@import "style/tooltip.less";
+@text-color: #4A4A4A;
+@light-gray: #DEDEDE;
+@border-gray: #E6E6E6;
+@background-gray: #F3F3F3;
+@background-table: #FAFAFA;
+
+* {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+div {
+     height: inherit;
+}
+
+::-webkit-scrollbar {
+     height: 10px;
+     width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-bottom: 0.5px solid @light-gray;
+    background-color: @background-gray;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background-color: @light-gray;
+    outline: 1px solid @light-gray;
+}
+
+.main-wrapper{
+    width: inherit;
+    height: inherit;
+}
+
+.header{
+    background: white;
+    box-sizing: border-box;
+    border-bottom: 2px solid @border-gray;
+    color: @text-color;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    .main-title {
+        float: left;
+        width: 35%;
+        font-size: 16px;
+        line-height: 40px;
+        font-weight:Bold;
+        margin-left:10px;
+
+    }
+
+    .legends {
+        float: right;
+        width: 60%;
+        font-size: 14px;
+        text-align: right;
+    }
+
+    .risk-trend {
+        display: inline-block;
+        margin-left: 30px;
+    }
+
+    .legend-text {
+        vertical-align: top;
+        margin-top: 10px;
+    }
+}
+
+.legend-icon, .svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    margin-top:3px;
+}
+
+.body {
+    overflow: hidden;
+    font-size: 12px;
+}
+
+.rows {
+    background: white;
+    white-space: nowrap;
+    display: block;
+    height: 100px;
+    overflow:hidden;
+    
+}
+.table-wrapper {
+    div{
+        display:inline-block;
+    }
+}
+
+.risk-title {
+    white-space: normal;
+}
+
+.outer{
+   overflow:hidden;
+}
+
+.col-0 {
+    overflow-y: scroll;
+    overflow-x:hidden;
+    padding-right: 3px; 
+    border-left: 2px solid @border-gray;
+    vertical-align: top;
+
+    .rows {
+        width: 100%;
+    }
+}
+
+.col-1 {
+    overflow-y: scroll;
+    overflow-x:hidden;
+    padding-right: 3px;
+    border-left: 2px solid @border-gray;
+    vertical-align: top;
+
+    .rows {
+        width: 100%;
+    }
+}
+
+.col-2 {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-left: 2px solid @border-gray;
+    border-right: 2px solid @border-gray;
+    vertical-align: top;
+
+}
+
+.col-23 {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-left: 2px solid @border-gray;
+    border-right: 2px solid @border-gray;
+    vertical-align: top;
+
+}
+ .col-3 {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-left: 2px solid @border-gray;
+    border-right: 2px solid @border-gray;
+    vertical-align: top;
+
+}
+span {
+    display:inline-block;
+}
+/* .col-1::-webkit-scrollbar { */
+/*     width: 0px;  [> remove scrollbar space <] */
+/*     background: transparent;  [> optional: just make scrollbar invisible <] */
+/* } */
+/* .col-2::-webkit-scrollbar { */
+/*     width: 0px;  [> remove scrollbar space <] */
+/*     background: transparent;  [> optional: just make scrollbar invisible <] */
+/* } */
+/* .col-3::-webkit-scrollbar { */
+/*     width: 0px;  [> remove scrollbar space <] */
+/*     background: transparent;  [> optional: just make scrollbar invisible <] */
+/* } */
+
+.table-header {
+    height: auto;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 15px;
+    color: @text-color;
+    background-color: @background-table;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.table-header .left-align {
+    text-align: left;
+}
+
+.table-content {
+    display:block;
+    text-align: center;
+    vertical-align: top;
+}
+
+.table-content.current-trend-drivers {
+    text-align: left;
+    padding:0 10px;
+    position: relative;
+    width: 100%;
+    display: table;
+}
+
+.col-header{
+    text-align: center;
+    overflow:hidden;
+    border-right: 2px solid @border-gray;
+    border-bottom: 1px solid @border-gray;
+    
+    span{
+        text-align: center;
+        padding:10px 0;
+    }
+}
+
+.col-header.left-align span {
+    margin-left: 10px;
+}
+
+/* .col2-header{ */
+/*     overflow: scroll; */
+/* } */
+.col-header::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+    /* padding: 10px 10px; */
+    /* p { */
+    /*     margin-top: 0; */
+    /* } */
+
+ul.drivers { 
+    margin: 0;
+    display: table-cell;
+    vertical-align: top;
+}   
+
+ul.drivers li {
+    color:#4a4a4a;
+    list-style-type: none !important;
+    margin-left: -21px;
+    white-space: normal;
+} 
+ul.drivers li2 {
+    color:#4a4a4a;
+    list-style-type: disc !important;
+    margin-left: -21px;
+    white-space: normal;
+}
+hr { 
+    //display: block;
+    margin-left: -21px;
+margin-right: auto;
+
+    //overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.risk-trend-hidden {
+    display: none;
+}
