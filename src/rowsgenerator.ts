@@ -33,7 +33,7 @@ module powerbi.extensibility.visual {
     private col0: d3.Selection<SVGAElement>;
     private col1: d3.Selection<SVGAElement>;
     private col2: d3.Selection<SVGAElement>;
-    private col23:d3.Selection<SVGAElement>;
+    //private col23:d3.Selection<SVGAElement>;
     private col3: d3.Selection<SVGAElement>;
     private tooltipGenerator: TooltipGenerator;
     private col0Header: d3.Selection<SVGAElement>;
@@ -72,14 +72,14 @@ module powerbi.extensibility.visual {
       .style('width',Utils.convertToPx(COLUMNSCONST.col0Width))
       .append('div')
       .attr('class', 'col-0')
-      .style('width',Utils.convertToPx(COLUMNSCONST.col0Width + 15));
+      .style('width',Utils.convertToPx(COLUMNSCONST.col0Width+15));
 
       this.col1 = this.tableWrapper.append('div')
       .attr('class', 'outer')
       .style('width',Utils.convertToPx(COLUMNSCONST.col1Width))
       .append('div')
       .attr('class', 'col-1')
-      .style('width',Utils.convertToPx(COLUMNSCONST.col1Width + 15));
+      .style('width',Utils.convertToPx(COLUMNSCONST.col1Width+4));
 
       this.col2 = this.tableWrapper.append('div')
       .attr('class', 'outer')
@@ -88,16 +88,17 @@ module powerbi.extensibility.visual {
       .attr('class', 'col-2')
       .style('width',Utils.convertToPx(this.dimensions.width - COLUMNSCONST.col3Width - COLUMNSCONST.col1Width - 5 + 7 - this.extraWidth));
       
-      this.col23 = this.tableWrapper.append('div')
+     /* this.col23 = this.tableWrapper.append('div')
       .attr('class', 'outer')
       .style('width',Utils.convertToPx(COLUMNSCONST.col23Width))
       .append('div')
       .attr('class', 'col-23')
       .style('width',Utils.convertToPx(COLUMNSCONST.col23Width + 15));
-
+*/
       this.col3 = this.tableWrapper.append('div')
       .attr('class', 'col-3')
-      .style('width',Utils.convertToPx(COLUMNSCONST.col3Width +7));
+      .style('width',Utils.convertToPx(COLUMNSCONST.col3Width))
+      .style('text-align','left');
 
       let index = 0;
       for( const key in riskTitleGroup) {
@@ -114,40 +115,54 @@ module powerbi.extensibility.visual {
           if(currentTrendDrivers.substring(0,1) !== "*"){var currentTrendDrivers ="\u2022&nbsp;&nbsp;".concat(currentTrendDrivers)}
           if(managementActions.substring(0,1) !== "*"){var managementActions ="\u2022&nbsp;&nbsp;".concat(managementActions)}
 
-          let extraDriverCount = currentTrendDrivers.replace("*****","xxxxxx").replace("*****","xxxxxx").replace("*****","xxxxxx").replace("*****","xxxxxx").replace("*****","xxxxxx")
+          let extraDriverCount = currentTrendDrivers//.replace("*****","xxxxxx").replace("*****","xxxxxx").replace("*****","xxxxxx").replace("*****","xxxxxx").replace("*****","xxxxxx")
           .replace("****","xxxxx") .replace("****","xxxxx") .replace("****","xxxxx") .replace("****","xxxxx") .replace("****","xxxxx")
           .replace("***","xxxx").replace("***","xxxx").replace("***","xxxx").replace("***","xxxx").replace("***","xxxx").replace("***","xxxx")
           .replace("**","xxx").replace("**","xxx").replace("**","xxx").replace("**","xxx").replace("**","xxx").replace("**","xxx")
-          .replace("*","xx").replace("*","xx").replace("*","xx").replace("*","xx").replace("*","xx").replace("*","xx");
+          .replace("*","xx").replace("*","xx").replace("*","xx").replace("*","xx").replace("*","xx").replace("*","xx").replace("*","xx").replace("*","xx").replace("*","xx").replace("*","xx");
           var returnDriverCount = '';
           if(extraDriverCount.length - currentTrendDrivers.length ==5){returnDriverCount = '<br><br><br><br><br><br>'}else if(extraDriverCount.length - currentTrendDrivers.length ==4){returnDriverCount = '<br><br><br><br><br>'}else if(extraDriverCount.length - currentTrendDrivers.length ==3){returnDriverCount = '<br><br><br><br>'}else if(extraDriverCount.length - currentTrendDrivers.length==2){returnDriverCount = '<br><br><br>'}else if (extraDriverCount.length - currentTrendDrivers.length ==1){returnDriverCount = '<br><br>'}else{returnDriverCount = '<br><br>'}
-          let extraActionCount = managementActions.replace("*****","yyyyyy").replace("*****","yyyyyy").replace("*****","yyyyyy").replace("*****","yyyyyy").replace("*****","yyyyyy").replace("*****","yyyyyy")
+          let extraActionCount = managementActions//.replace("*****","yyyyyy").replace("*****","yyyyyy").replace("*****","yyyyyy").replace("*****","yyyyyy").replace("*****","yyyyyy").replace("*****","yyyyyy")
           .replace("****","yyyyy").replace("****","yyyyy").replace("****","yyyyy").replace("****","yyyyy").replace("****","yyyyy").replace("****","yyyyy")
           .replace("***","yyyy").replace("***","yyyy").replace("***","yyyy").replace("***","yyyy").replace("***","yyyy").replace("***","yyyy")
           .replace("**","yyy").replace("**","yyy").replace("**","yyy").replace("**","yyy").replace("**","yyy").replace("**","yyy")
-          .replace("*","yy").replace("*","yy").replace("*","yy").replace("*","yy").replace("*","yy").replace("*","yy");
+          .replace("*","yy").replace("*","yy").replace("*","yy").replace("*","yy").replace("*","yy").replace("*","yy").replace("*","yy").replace("*","yy").replace("*","yy").replace("*","yy");
           var returnActionCount = '';
           if(extraActionCount.length - managementActions.length ==7){returnActionCount = '<br><br><br><br><br><br><br>'}else if(extraActionCount.length - managementActions.length ==6){returnActionCount = '<br><br><br><br><br><br>'}else if(extraActionCount.length - managementActions.length ==5){returnActionCount = '<br><br><br><br><br>'}else if(extraActionCount.length - managementActions.length ==4){returnActionCount = '<br><br><br><br>'}else if(extraActionCount.length - managementActions.length ==3){returnActionCount = '<br><br><br>'}else if(extraActionCount.length - managementActions.length==2){returnActionCount = '<br><br>'}else if(extraActionCount.length - managementActions.length ==1){returnActionCount = '<br>'}
           var driveractioncount = (extraActionCount.length - managementActions.length)+(extraDriverCount.length - currentTrendDrivers.length)+1;
-         var newHeight = 100;
-          if(driveractioncount >3){newHeight = 125};
+         //var newHeight = 100;
+          var newHeight = 15*driveractioncount+60;
+
+         /* if(driveractioncount >3){newHeight = 125};
+          if(driveractioncount >4){newHeight = 130};
           if(driveractioncount >5){newHeight = 155};
-          if(driveractioncount >7){newHeight = 185};
-          if(driveractioncount >9){newHeight = 215};
-          if(driveractioncount >11){newHeight = 245};     
+          if(driveractioncount >6){newHeight = 160};
+          if(driveractioncount >7){newHeight = 194};
+          if(driveractioncount >8){newHeight = 195};
+          if(driveractioncount >9){newHeight = 225};
+          if(driveractioncount >11){newHeight = 245};
+          if(driveractioncount >14){newHeight = 319};
+          if(driveractioncount >15){newHeight = 356};
+          if(driveractioncount >16){newHeight = 356};
+          if(driveractioncount >17){newHeight = 356};
+          if(driveractioncount >18){newHeight = 356};
+          if(driveractioncount >19){newHeight = 361};
+          if(driveractioncount >20){newHeight = 378};     */
           ;
-         const col0Row = this.col0.append('div')
+         const col0Row = this.col0.append('div')        
+         .style('font-weight','bold')
           .attr('class', 'rows table-content')
           .style('padding-top', Utils.convertToPx(COLUMNSCONST.padding))
           .style('padding-bottom', Utils.convertToPx(COLUMNSCONST.padding ))
-          .style('height', Utils.convertToPx(newHeight))
-          .style('text-align', 'left')    
+          .style('height', Utils.convertToPx(newHeight+16))
           .style('background-color', color);
 
        
-        col0Row.append('span')  
+        col0Row.append('li')
+
         .html(data[0].riskCategory)
-        .style('margin-left', Utils.convertToPx(10))
+        .style('text-align','left')
+        .style('margin-left', Utils.convertToPx(2))
         .attr('class', 'risk-category');
           
           
@@ -155,19 +170,22 @@ module powerbi.extensibility.visual {
             .attr('class', 'rows table-content')
             .style('padding-top', Utils.convertToPx(COLUMNSCONST.padding))
             .style('padding-bottom', Utils.convertToPx(COLUMNSCONST.padding))
-            .style('height', Utils.convertToPx(newHeight))
+            .style('height', Utils.convertToPx(newHeight+16))
             .style('text-align', 'left')    
             .style('background-color', color);
 
          
-          col1Row.append('span')  
+          col1Row.append('li')             
+          .style('font-weight','bold')
           .html(data[0].hierLevel.toString()
-            .replace("4","&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
-            .replace("3","&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
-            .replace("2","&nbsp;&nbsp;&nbsp;&nbsp;")
+            .replace("4","&nbsp;&nbsp;&nbsp;")
+            .replace("3","&nbsp;&nbsp;")
+            .replace("2","&nbsp;")
             .replace("1","")
+            
             .concat(data[0].riskTitle))
-            .style('margin-left', Utils.convertToPx(10))
+
+            .style('margin-left', Utils.convertToPx(5))
             .attr('class', 'risk-title');
 
 
@@ -175,7 +193,7 @@ module powerbi.extensibility.visual {
             .attr('class', 'rows table-content')
             .style('padding-top', Utils.convertToPx(COLUMNSCONST.padding))
             .style('padding-bottom', Utils.convertToPx(COLUMNSCONST.padding))
-            .style('height', Utils.convertToPx(newHeight))
+            .style('height', Utils.convertToPx(newHeight+16))
             .style('background-color', color);
 
           const currentHeaders = getRiskHeaders(data);
@@ -204,7 +222,7 @@ module powerbi.extensibility.visual {
 
           const col2RowData = col2Row.selectAll('span').data(riskTrendData).enter()
             .append('span')
-            .style('width', Utils.convertToPx(COLUMNSCONST.spanWidth ));
+            .style('width', Utils.convertToPx(COLUMNSCONST.spanWidth));
 
           col2RowData.append('span')
             .attr('class', 'legend-icon')
@@ -236,44 +254,46 @@ module powerbi.extensibility.visual {
               return Utils.getTransformValue(value);
             });
 
-            const col23Row = this.col23.append('div')
-            .attr('class', 'rows table-content current-trend-drivers categories')
-            .style('padding-top', Utils.convertToPx(COLUMNSCONST.padding ))
-            .style('padding-bottom', Utils.convertToPx(COLUMNSCONST.padding))
-            .style('height', Utils.convertToPx(newHeight+.4))
-            .style('text-align', 'left')    
-            .style('background-color', color);
-    
-          
-      
-          col23Row.append('div')
-          .html('Drivers' + returnDriverCount +'Management Actions'+ returnActionCount)
-          .attr('class', 'drivers');
-
+   
           const col3Row = this.col3.append('div')
             .attr('class', 'rows table-content current-trend-drivers')
             .style('padding-top', Utils.convertToPx(COLUMNSCONST.padding))
             .style('padding-bottom', Utils.convertToPx(COLUMNSCONST.padding))
-            .style('height', Utils.convertToPx(newHeight+.75))
+            .style('height', Utils.convertToPx(newHeight+16))
+            .style('padding-right',Utils.convertToPx(0))
             .style('background-color', color);
 
 
-        
-          col3Row.append('ul')
-            .attr("class", "drivers") 
-            .html(Utils.formatText(Utils.convertLineBreaktoList(currentTrendDrivers
-              .replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
+          col3Row.append('li')
+            .attr("class", "drivers")
+            .style('text-align','left')
+           .style('font-weight','bold')
+           .html("Drivers:")
+           .append("li")
+           .style('font-weight','normal')
+            .html((Utils.convertLineBreaktoList(currentTrendDrivers
+             // .replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
               .replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
               .replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
-              .replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
-              .replace("*","\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;"), COLUMNSCONST.col3Width - 60)
-              .concat('<br>')
-              + '\n'.concat(Utils.convertLineBreaktoList(managementActions
-                .replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
+              .replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
+              .replace("*","\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;")
+
+              , COLUMNSCONST.col3Width - 60)
+              .concat('<br>')))
+              .append("li")
+              .style('font-weight','bold')
+              .html("Management Actions:")
+              .append("li")
+              .style('font-weight','normal')
+              .html((Utils.convertLineBreaktoList(managementActions
+                //.replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
                 .replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
                 .replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
-                .replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
-                .replace("*","\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;"), COLUMNSCONST.col3Width - 60))));
+                .replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
+                .replace("*","\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;")
+                , COLUMNSCONST.col3Width - 60)
+                ))
+                ;
             }
       }
       this.maxScrollLeft = (<any>this.col2.node()).scrollWidth - (<any>this.col2.node()).clientWidth;
@@ -289,7 +309,7 @@ module powerbi.extensibility.visual {
         const sp = this.col0.property('scrollTop') ;
         this.col1.property('scrollTop', sp);
         this.col2.property('scrollTop', sp);
-        this.col23.property('scrollTop', sp);
+       // this.col23.property('scrollTop', sp);
         this.col3.property('scrollTop', sp); 
         this.scrollTopPosition = sp;
       })).on('mouseout', () => this.col0.on('scroll', null));
@@ -297,7 +317,7 @@ module powerbi.extensibility.visual {
       this.col1.on('mouseover',() => this.col1.on('scroll', () => {
         const sp = this.col1.property('scrollTop') ;
         this.col2.property('scrollTop', sp);
-        this.col23.property('scrollTop', sp);
+       // this.col23.property('scrollTop', sp);
         this.col0.property('scrollTop', sp);
         this.col3.property('scrollTop', sp); 
         this.scrollTopPosition = sp;
@@ -312,7 +332,7 @@ module powerbi.extensibility.visual {
         this.col3.property('scrollTop', sp);
         sp = this.col3.property('scrollTop');
         this.col2.property('scrollTop', sp);
-        this.col23.property('scrollTop', sp);
+     //   this.col23.property('scrollTop', sp);
         this.scrollTopPosition = sp;        
         this.fiscalYearHeaders.style('margin-left', Utils.convertToPx(-spLeft));
       })).on('mouseout', () => this.col2.on('scroll', null));
@@ -327,7 +347,7 @@ module powerbi.extensibility.visual {
         }
       });
 
-      this.col23.on('mouseover',() => this.col23.on('scroll', () => {
+     /* this.col23.on('mouseover',() => this.col23.on('scroll', () => {
         const sp = this.col23.property('scrollTop') ;
         this.col1.property('scrollTop', sp);
         this.col2.property('scrollTop', sp);
@@ -335,14 +355,14 @@ module powerbi.extensibility.visual {
         this.col3.property('scrollTop', sp); 
         this.scrollTopPosition = sp;
       })).on('mouseout', () => this.col23.on('scroll', null));
-
+*/
      
       this.col3.on('mouseover',() => this.col3.on('scroll', () => {
         const sp = this.col3.property('scrollTop') ;
         this.col1.property('scrollTop', sp);
         this.col0.property('scrollTop', sp);
         this.col2.property('scrollTop', sp);
-        this.col23.property('scrollTop', sp);
+        //this.col23.property('scrollTop', sp);
         this.scrollTopPosition = sp;
       })).on('mouseout', () => this.col3.on('scroll', null));
     }
@@ -354,13 +374,14 @@ module powerbi.extensibility.visual {
 
       this.col0Header = tableHeader.append('div')
         .attr('class', 'col-header left-align')
-        .style('width', Utils.convertToPx(COLUMNSCONST.col0Width))
+        .style('width', Utils.convertToPx(COLUMNSCONST.col0Width-1))
         .style('height', Utils.convertToPx(COLUMNSCONST.tableHeaderHeight))
         .append('span')
         .text('CATEGORY');
 
       this.col1Header = tableHeader.append('div')
         .attr('class', 'col-header left-align')
+       // .style('text-align','center')
         .style('width', Utils.convertToPx(COLUMNSCONST.col1Width -2))
         .style('height', Utils.convertToPx(COLUMNSCONST.tableHeaderHeight))
         .append('span')
@@ -368,9 +389,9 @@ module powerbi.extensibility.visual {
 
       this.col2Header = tableHeader.append('div')
         .attr('class', 'col-header col2-header ')
-        .style('width', Utils.convertToPx(COLUMNSCONST.col2Width + 28))
+        .style('width', Utils.convertToPx(COLUMNSCONST.col2Width-126))
         .style('height', Utils.convertToPx(COLUMNSCONST.tableHeaderHeight))
-       
+       .style('padding-left',Utils.convertToPx(1))
 
       this.extraWidth = Math.max((this.dimensions.width - COLUMNSCONST.col3Width - COLUMNSCONST.col1Width - 5) - (this.riskHeaders.length * COLUMNSCONST.spanWidth), 0);
 
@@ -385,7 +406,7 @@ module powerbi.extensibility.visual {
 
       this.col3Header = tableHeader.append('div')
         .attr('class', 'col-header left-align')
-        .style('width', Utils.convertToPx(COLUMNSCONST.col23Width+COLUMNSCONST.col3Width + 8))
+        .style('width', Utils.convertToPx(COLUMNSCONST.col3Width))
         .style('height', Utils.convertToPx(COLUMNSCONST.tableHeaderHeight))
         .append('span')
         .text('DRIVERS AND MANAGEMENT ACTIONS');

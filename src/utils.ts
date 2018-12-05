@@ -72,8 +72,8 @@ module powerbi.extensibility.visual {
     }
 
     export function formatText(text: string): string {
-      text = text.replace('-', '');
-      text = text.replace(/-/g, '<br/>');
+     // text = text.replace(/-/g, '');
+     // text = text.replace(/-/g, '<br/>');
 
       return text;
     }

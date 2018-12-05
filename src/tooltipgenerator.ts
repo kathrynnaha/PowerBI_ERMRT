@@ -114,43 +114,48 @@ module powerbi.extensibility.visual {
           .attr("class", "risk-detail");
 
         innerContent
-          .append("h3")
+          .append("li2")
+          .style('font-weight','bold')
           .text("Drivers:")
+          .append("li2")
+          .html('<br>')
           .attr("class", "header");
 
-        const trendDrivers = innerContent.append("ul");
+        const trendDrivers = innerContent.append("li2");
         var trendDriversUpdates = ermDataPoint.trendDriversUpdate;
    
         if(trendDriversUpdates.substring(0,1) !== "*"){var trendDriversUpdates ="\u2022&nbsp;&nbsp;" .concat(trendDriversUpdates)}
 
-          trendDrivers.append("li")
+          trendDrivers.append("li2")
           .html(trendDriversUpdates
-            .replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
-              .replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
-              .replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
-              .replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
-              .replace("*","\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;"))
-
+            .replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
+            .replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
+            .replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
+            .replace("*","\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;")
+          )
         innerContent
-          .append("h3")
+          .append("li2")
+          .html('<br><br>')
+          .append("li2")
+          .style('font-weight','bold')
+
           .text("Management Actions:")
+          .append("li2")
+          .html('<br>')
           .attr("class", "header");
 
-        const managementActions = innerContent.append("ul");
+        const managementActions = innerContent.append("li2");
         var managementActionsUpdates = ermDataPoint.managementActions;
         if(managementActionsUpdates.substring(0,1) !== "*"){var managementActionsUpdates ="\u2022&nbsp;&nbsp;" .concat(managementActionsUpdates)}
 
-
-        managementActions.append("li").html(managementActionsUpdates
-          .replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("*****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
+        managementActions.append("li2")
+        .html(managementActionsUpdates
           .replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("****","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
           .replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("***","<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
-          .replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
-          .replace("*","\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;"))
-        ;
+          .replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;").replace("**","<br>&nbsp;&nbsp;&nbsp;\u2022&nbsp;&nbsp;")
+          .replace("*","\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;").replace("*","<br/>\u2022&nbsp;&nbsp;")
+        ) ;
         
-
-
         const popupPosition = Utils.getNodePosition(popup.node());
 
         if((<any>popup.node().parentNode).offsetHeight / 2 < popupPosition.top) {
